@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_api/add_user.dart';
 import 'package:flutter_web_api/api_handler.dart';
 import 'package:flutter_web_api/edit_page.dart';
+import 'package:flutter_web_api/find_user.dart';
 
 import 'model.dart';
 
@@ -51,16 +52,37 @@ class _MainPageState extends State<MainPage>{
         padding: const EdgeInsets.all(20),
         child: const Text('Refresh'),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(
-              builder: (context) => AddUser(),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton:Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 1,
+            backgroundColor: Colors.teal,
+            foregroundColor: Colors.white,
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: ((context) => FindUser()),
+               )
+              );
+            },
+            child: const Icon(Icons.search),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            heroTag: 2,
+            backgroundColor: Colors.teal,
+            foregroundColor: Colors.white,
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => AddUser(),
+              ),
+              );
+            },
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
       body: Column(
         children: [
